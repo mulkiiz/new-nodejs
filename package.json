@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/mulkiiz/new-nodejs/issues"
   },
-  "homepage": "https://github.com/mulkiiz/new-nodejs#readme"
+  "homepage": "https://github.com/mulkiiz/new-nodejs#readme",
+  "dependencies": {
+    "nanoid": "^3.1.25"
+  }
 }
