@@ -2,26 +2,28 @@ const routes = (handler) => [
     {
         method: 'POST',
         path: '/notes',
-        handler: addNoteHandler,
+        handler: handler.postNoteHandler, // postNoteHandler hanya menerima dan menyimpan "satu" note.
     },
     {
         method: 'GET',
         path: '/notes',
-        handler: getAllNotesHandler,
+        handler: handler.getNotesHandler, // getNotesHandler mengembalikan "banyak" note./
     },
     {
         method: 'GET',
         path: '/notes/{id}',
-        handler: getNoteByIdHandler,
+        handler: handler.getNoteByIdHandler, // getNoteByIdHandler mengembalikan "satu" note.
     },
     {
         method: 'PUT',
         path: '/notes/{id}',
-        handler: editNoteByIdHandler,
+        handler: handler.putNoteByIdHandler, // putNoteByIdHandler hanya menerima dan mengubah "satu" note.
     },
     {
         method: 'DELETE',
         path: '/notes/{id}',
-        handler: deleteNoteByIdHandler,
+        handler: handler.deleteNoteByIdHandler,
     },
 ];
+
+module.exports = routes;
