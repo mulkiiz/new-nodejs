@@ -19,6 +19,7 @@
   "homepage": "https://github.com/mulkiiz/new-nodejs#readme",
   "dependencies": {
     "@hapi/hapi": "^20.1.5",
+    "joi": "^17.4.2",
     "nanoid": "^3.1.25"
   },
   "devDependencies": {
