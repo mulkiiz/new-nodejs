@@ -4,7 +4,8 @@
   "description": "re-create hapi project with plugins",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon ./src/server.js"
   },
   "repository": {
     "type": "git",
@@ -17,6 +18,10 @@
   },
   "homepage": "https://github.com/mulkiiz/new-nodejs#readme",
   "dependencies": {
+    "@hapi/hapi": "^20.1.5",
     "nanoid": "^3.1.25"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.12"
   }
 }

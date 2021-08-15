@@ -1,6 +1,12 @@
 class NotesHandler {
     constructor(services){
         this._service = services;
+
+        this.postNoteHandler = this.postNoteHandler.bind(this);
+        this.getNotesHandler = this.getNotesHandler.bind(this);
+        this.getNoteByIdHandler = this.getNoteByIdHandler.bind(this);
+        this.putNoteByIdHandler = this.putNoteByIdHandler.bind(this);
+        this.deleteNoteByIdHandler = this.deleteNoteByIdHandler.bind(this);
     }
 
     postNoteHandler(request,h) {
@@ -8,9 +14,9 @@ class NotesHandler {
             const { title = 'untitled', body, tags } = request.payload;
             const noteId = this._service.addNote({title, body, tags});
 
-            const response = h.request({
+            const response = h.response({
                 status: 'success',
-                message: 'Catatan berhasil ditambahkan',
+                message: 'Catatan berhasil disimpan',
                 data:{
                     noteId,
                 },

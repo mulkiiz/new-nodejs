@@ -1,4 +1,6 @@
-class NoteServices{
+const { nanoid } = require('nanoid');
+
+class NotesService{
     constructor(){
         this._notes = [];
     }
