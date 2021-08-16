@@ -1,5 +1,5 @@
 class NotesHandler {
-    constructor(services){
+    constructor(services,validator){
         this._service = services;
         this._validator = validator;
 
@@ -26,11 +26,28 @@ class NotesHandler {
             response.code(201);
             return response;
         }catch(error){
-            const response = h.response({
+            /* const response = h.response({
                 status:'fail',
                 message: error.message,
             });
             response.code(400);
+            return response; */
+            if (error instanceof ClientError) {
+                const response = h.response({
+                  status: 'fail',
+                  message: error.message,
+                });
+                response.code(error.statusCode);
+                return response;
+            }
+
+            // Server ERROR!
+            const response = h.response({
+                status: 'error',
+                message: 'Maaf, terjadi kegagalan pada server kami.',
+            });
+            response.code(500);
+            console.error(error);
             return response;
         }
     }
@@ -56,13 +73,30 @@ class NotesHandler {
               },
             };
         } catch (error) {
-            const response = h.response({
+            /*const response = h.response({
               status: 'fail',
               message: error.message,
             });
             response.code(404);
-            return response;
-        }
+            return response;*/
+            if (error instanceof ClientError) {
+                const response = h.response({
+                  status: 'fail',
+                  message: error.message,
+                });
+                response.code(error.statusCode);
+                return response;
+            }
+         
+            // Server ERROR!
+            const response = h.response({
+                status: 'error',
+                message: 'Maaf, terjadi kegagalan pada server kami.',
+            });
+              response.code(500);
+              console.error(error);
+              return response;
+            }
     }   
     
     putNoteByIdHandler(request,h) {
@@ -77,12 +111,30 @@ class NotesHandler {
               message: 'Catatan berhasil diperbarui',
             };
         } catch (error) {
-            const response = h.response({
+            /*const response = h.response({
               status: 'fail',
               message: error.message,
             });
             response.code(400);
-            return response;
+            return response;*/
+
+            if (error instanceof ClientError) {
+                const response = h.response({
+                  status: 'fail',
+                  message: error.message,
+                });
+                response.code(error.statusCode);
+                return response;
+            }
+         
+            // Server ERROR!
+            const response = h.response({
+                status: 'error',
+                message: 'Maaf, terjadi kegagalan pada server kami.',
+            });
+              response.code(500);
+              console.error(error);
+              return response;
         }
     }
 
@@ -95,12 +147,29 @@ class NotesHandler {
               message: 'Catatan berhasil dihapus',
             };
         } catch (error) {
-            const response = h.response({
+            /*const response = h.response({
               status: 'fail',
               message: 'Catatan gagal dihapus. Id tidak ditemukan',
             });
             response.code(404);
-            return response;
+            return response;*/
+            if (error instanceof ClientError) {
+                const response = h.response({
+                  status: 'fail',
+                  message: error.message,
+                });
+                response.code(error.statusCode);
+                return response;
+            }
+         
+            // Server ERROR!
+            const response = h.response({
+                status: 'error',
+                message: 'Maaf, terjadi kegagalan pada server kami.',
+            });
+              response.code(500);
+              console.error(error);
+              return response;
         }
     }
 }
